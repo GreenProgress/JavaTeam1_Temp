@@ -17,7 +17,7 @@ spring:
     time-zone: Asia/Seoul
     default-property-inclusion: non_null
 
-  # 👇👇👇 MongoDB 연결 설정
+  # MongoDB 연결 설정
   data:
     mongodb:
       # MongoDB 연결 URI를 명시적으로 설정합니다.
