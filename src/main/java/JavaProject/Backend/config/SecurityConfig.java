@@ -75,7 +75,8 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/auth/**",
                                 "/api/situations/**",
-                                "/api/laws/**"
+                                "/api/laws/**",
+                                "/api/health"
                         ).permitAll()
 
                         // 2. [수정] 비로그인 진단을 위해 허용 (답변 제출, 분석 요청, PDF)
