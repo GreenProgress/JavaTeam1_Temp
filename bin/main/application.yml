@@ -1,0 +1,65 @@
+# ==============================
+# Spring Boot 기본 설정 및 MongoDB 설정 통합
+# ==============================
+spring:
+  application:
+    name: jp-legal-assistant
+
+  # MVC 경로 매칭 오류 해결 (중요!)
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  # Jackson 설정 (JSON 직렬화)
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: Asia/Seoul
+    default-property-inclusion: non_null
+
+  # 👇👇👇 MongoDB 연결 설정
+  data:
+    mongodb:
+      # MongoDB 연결 URI를 명시적으로 설정합니다.
+      # 로컬 환경 기본값: mongodb://127.0.0.1:27017/데이터베이스_이름
+      # 필요하다면 여기에 Atlas 또는 원격 DB URI를 입력하세요.
+      uri: mongodb://127.0.0.1:27017/jp-legal-assistant
+
+# ==============================
+# 서버 설정
+# ==============================
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# ==============================
+# 로깅 설정
+# ==============================
+logging:
+  level:
+    root: INFO
+    JavaProject.Backend: DEBUG
+    org.springframework.data.mongodb: DEBUG
+
+# ==============================
+# JWT 설정
+# ==============================
+jwt:
+  # 비밀 키는 환경 변수 JWT_SECRET으로 설정하거나 기본값을 사용합니다.
+  secret: ${JWT_SECRET:your-secret-key-change-in-production}
+  expiration: 86400000  # 24시간
+
+# ==============================
+# 파일 업로드 설정
+# ==============================
+file:
+  upload:
+    dir: ${FILE_UPLOAD_DIR:./uploads/pdfs}
+
+google:
+  ai:
+    api-key: "AIzaSyDTz5cbAOrThLqzvlvxIOmhpFw5Ug4JMx4"
